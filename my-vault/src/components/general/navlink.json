@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_general_navlinks",
+  "info": {
+    "displayName": "Navlink"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "path": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}
