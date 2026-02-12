@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_process_items",
+  "info": {
+    "displayName": "Process Item",
+    "description": "Individual delivery format item with title and description"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Title"
+    },
+    "description": {
+      "type": "text",
+      "default": "Description text"
+    }
+  }
+}

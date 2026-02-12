@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import React from "react";
 import Layout from "@/components/layout/Layout";
-import { getServicesPage, STRAPI_URL, ServicesPage } from "@/lib/strapi";
+import { getServicesPage, STRAPI_URL, type ServicesPage } from "@/lib/strapi";
 import { Check, Sparkles, Target } from "lucide-react";
 
 const ClarityIcon = () => (
@@ -57,44 +57,23 @@ const ServicesPage = () => {
   const [pageData, setPageData] = useState<ServicesPage | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const benefits = [
+  const fallbackBenefits = [
     "Leadership Communication & Executive Presence: Strengthen how leaders communicate and show up in high-stakes environments. Ideal for executives and senior leaders.",
     "Public Speaking for Leaders: Master the art of delivering impactful presentations and speeches. Ideal for leaders who need to influence and inspire audiences.",
     "Leadership Visibility & Stakeholder Presence: Enhance visibility and build stronger stakeholder relationships. Ideal for leaders focused on influence and networking.",
     "Executive Presence [including professional image & etiquette]: Develop the gravitas and authority that commands attention. Ideal for professionals building executive presence.",
   ];
 
-  const outcomes = [
-    {
-      icon: "ClarityIcon",
-      title: "Confident Communication for Client-Facing Teams",
-      description: "Build confidence and presence in client interactions. Ideal for professionals in sales, consulting, and customer service.",
-    },
-    {
-      icon: "ConfidenceIcon",
-      title: "Professional Presence & Brand Representation",
-      description: "Develop the professional image and etiquette that enhances brand representation. Ideal for client-facing roles.",
-    },
-    {
-      icon: "ConnectionIcon",
-      title: "Communication Under Pressure",
-      description: "Maintain composure and effectiveness in high-pressure client situations. Ideal for teams dealing with challenging client engagements.",
-    },
+  const fallbackOutcomes = [
+    { icon: "ClarityIcon", title: "Confident Communication for Client-Facing Teams", description: "Build confidence and presence in client interactions. Ideal for professionals in sales, consulting, and customer service." },
+    { icon: "ConfidenceIcon", title: "Professional Presence & Brand Representation", description: "Develop the professional image and etiquette that enhances brand representation. Ideal for client-facing roles." },
+    { icon: "ConnectionIcon", title: "Communication Under Pressure", description: "Maintain composure and effectiveness in high-pressure client situations. Ideal for teams dealing with challenging client engagements." },
   ];
 
-  const process = [
-    {
-      title: "In-Person",
-      description: "Interactive workshops and coaching sessions conducted face-to-face for maximum engagement and impact.",
-    },
-    {
-      title: "Virtual",
-      description: "Online workshops and coaching sessions delivered remotely, ensuring accessibility and convenience.",
-    },
-    {
-      title: "Hybrid",
-      description: "A combination of in-person and virtual delivery, offering flexibility to meet diverse organisational needs.",
-    },
+  const fallbackProcess = [
+    { title: "In-Person", description: "Interactive workshops and coaching sessions conducted face-to-face for maximum engagement and impact." },
+    { title: "Virtual", description: "Online workshops and coaching sessions delivered remotely, ensuring accessibility and convenience." },
+    { title: "Hybrid", description: "A combination of in-person and virtual delivery, offering flexibility to meet diverse organisational needs." },
   ];
 
   useEffect(() => {
@@ -131,6 +110,30 @@ const ServicesPage = () => {
   const benefitsTitleLines = pageData?.benefitsTitle
     ? pageData.benefitsTitle.split('\n')
     : ["Leadership", "Communication", "Development"];
+
+  // Parse benefits list (newline-separated string)
+  const getBenefitsList = () => {
+    if (pageData?.benefitsList) {
+      return pageData.benefitsList.split('\n').filter(item => item.trim());
+    }
+    return fallbackBenefits;
+  };
+
+  // Get outcomes list (handle component arrays)
+  const getOutcomesList = () => {
+    if (pageData?.outcomesList && Array.isArray(pageData.outcomesList)) {
+      return pageData.outcomesList;
+    }
+    return fallbackOutcomes;
+  };
+
+  // Get process list (handle component arrays)
+  const getProcessList = () => {
+    if (pageData?.processList && Array.isArray(pageData.processList)) {
+      return pageData.processList;
+    }
+    return fallbackProcess;
+  };
 
   return (
     <Layout>
@@ -178,13 +181,13 @@ const ServicesPage = () => {
               </p>
 
               <ul className="space-y-4">
-                {(pageData?.benefitsList || benefits).map((benefit, index) => (
+                {getBenefitsList().map((benefit, index) => (
                   <li key={index} className="flex flex-col md:flex-row items-center md:items-start gap-3">
                     <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">
                       <Check className="w-4 h-4 text-primary" />
                     </div>
                     <span className="text-foreground text-center md:text-left break-words">
-                      {typeof benefit === 'string' ? benefit : benefit}
+                      {benefit}
                     </span>
                   </li>
                 ))}
@@ -221,9 +224,9 @@ const ServicesPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {(pageData?.outcomesList || outcomes).map((outcome, index) => {
+            {getOutcomesList().map((outcome, index) => {
+              const iconName = outcome.icon || fallbackOutcomes[index]?.icon || 'ClarityIcon';
               const getIcon = () => {
-                const iconName = typeof outcome === 'object' && outcome.icon ? outcome.icon : outcome.icon;
                 switch (iconName) {
                   case 'ClarityIcon': return <ClarityIcon />;
                   case 'ConfidenceIcon': return <ConfidenceIcon />;
@@ -231,7 +234,6 @@ const ServicesPage = () => {
                   default: return index === 0 ? <ClarityIcon /> : index === 1 ? <ConfidenceIcon /> : <ConnectionIcon />;
                 }
               };
-              const outcomeData = typeof outcome === 'object' ? outcome : outcome;
               return (
                 <div
                   key={index}
@@ -244,10 +246,10 @@ const ServicesPage = () => {
                     </div>
                   </div>
                   <h3 className="text-xl font-semibold text-primary mb-3">
-                    {outcomeData.title}
+                    {outcome.title || fallbackOutcomes[index]?.title}
                   </h3>
                   <p className="text-primary leading-relaxed">
-                    {outcomeData.description}
+                    {outcome.description || fallbackOutcomes[index]?.description}
                   </p>
                 </div>
               );
@@ -270,21 +272,19 @@ const ServicesPage = () => {
 
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {(pageData?.processList || process).map((item, index) => {
-                const processData = typeof item === 'object' ? item : item;
-                return (
+              {getProcessList().map((item, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 flex items-center justify-center mx-auto mb-6">
                     <div className="text-6xl font-bold text-primary animate-number-flash">{index + 1}</div>
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {processData.title}
+                    {item.title || fallbackProcess[index]?.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    {processData.description}
+                    {item.description || fallbackProcess[index]?.description}
                   </p>
                 </div>
-              )})}
+              ))}
             </div>
           </div>
         </div>

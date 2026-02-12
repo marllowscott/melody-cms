@@ -106,6 +106,21 @@ interface Service extends BaseContentSection {
   };
 }
 
+// Outcome Item Component
+interface OutcomeItem {
+  id: number;
+  icon?: 'ClarityIcon' | 'ConfidenceIcon' | 'ConnectionIcon';
+  title?: string;
+  description?: string;
+}
+
+// Process Item Component
+interface ProcessItem {
+  id: number;
+  title?: string;
+  description?: string;
+}
+
 // Testimonial Component
 interface Testimonial extends BaseContentSection {
   __component: 'sections.testimonial';
@@ -196,14 +211,14 @@ interface ServicesPage {
   benefitsSubtitle?: string;
   benefitsTitle?: string;
   benefitsDescription?: string;
-  benefitsList?: string[];
+  benefitsList?: string;
   outcomesSubtitle?: string;
   outcomesTitle?: string;
   outcomesDescription?: string;
-  outcomesList?: Array<{icon?: string; title?: string; description?: string}>;
+  outcomesList?: OutcomeItem[];
   processSubtitle?: string;
   processTitle?: string;
-  processList?: Array<{title?: string; description?: string}>;
+  processList?: ProcessItem[];
   ctaTitle?: string;
   ctaButtonText?: string;
   ctaDescription?: string;
