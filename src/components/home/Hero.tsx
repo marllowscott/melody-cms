@@ -221,7 +221,7 @@ const Hero = () => {
                     variant={getButtonVariant(index) as 'default' | 'outline'}
                     className="rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-7 py-6 group"
                   >
-                    <Link to={button.link.startsWith('http') ? button.link : button.link}>
+                    <Link to={button.link?.startsWith('http') ? button.link : button.link || '#'}>
                       {button.text}
                     </Link>
                   </Button>

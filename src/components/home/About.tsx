@@ -62,7 +62,7 @@ const About = () => {
   const getImageUrl = () => {
     if (aboutData?.image?.data?.attributes?.url) {
       const url = aboutData.image.data.attributes.url;
-      return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+      return url?.startsWith('http') ? url : `${STRAPI_URL}${url}`;
     }
     return "/melody.png";
   };

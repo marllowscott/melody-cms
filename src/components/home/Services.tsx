@@ -85,7 +85,7 @@ const Services = () => {
   const getIconUrl = (icon: Service['icon']) => {
     if (icon?.data?.attributes?.url) {
       const url = icon.data.attributes.url;
-      return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+      return url?.startsWith('http') ? url : `${STRAPI_URL}${url}`;
     }
     return null;
   };
