@@ -126,8 +126,7 @@ const About = () => {
               {loading ? 'Loading...' : aboutData?.subtitle || 'OUR APPROACH'}
             </p>
             <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight break-words">
-              {loading ? 'Loading...' : aboutData?.title || 'Addressing the Gap in '}
-              <span className="text-primary">Leadership Communication</span>
+              {loading ? 'Loading...' : aboutData?.title || 'Addressing the Gap in Leadership Communication'}
             </h1>
             <div>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
