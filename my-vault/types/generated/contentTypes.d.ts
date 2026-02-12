@@ -655,6 +655,10 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     logo: Schema.Attribute.Media<'images'>;
     navbar: Schema.Attribute.Component<'general.navlink', true>;
     publishedAt: Schema.Attribute.DateTime;
+    servicesSectionDescription: Schema.Attribute.Text;
+    servicesSectionSubtitle: Schema.Attribute.Text;
+    servicesSectionTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'OUR WORK'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

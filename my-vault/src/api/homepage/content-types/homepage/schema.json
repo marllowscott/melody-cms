@@ -86,6 +86,16 @@
         "sections.service",
         "sections.testimonial"
       ]
+    },
+    "servicesSectionTitle": {
+      "type": "string",
+      "default": "OUR WORK"
+    },
+    "servicesSectionSubtitle": {
+      "type": "text"
+    },
+    "servicesSectionDescription": {
+      "type": "text"
     }
   }
 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import React from "react";
-import { getHomepage, STRAPI_URL } from "@/lib/strapi";
+import { getHomepage, STRAPI_URL, Homepage } from "@/lib/strapi";
 
 interface Service {
   __component: string;
@@ -21,6 +21,7 @@ interface Service {
 
 const Services = () => {
   const [services, setServices] = useState<Service[]>([]);
+  const [homepageData, setHomepageData] = useState<Homepage | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Fallback static data
@@ -42,15 +43,25 @@ const Services = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const homepageData = await getHomepage();
-        if (homepageData?.contentSections) {
-          const serviceSections = homepageData.contentSections.filter(
-            (section) => section.__component === 'sections.service'
-          ) as Service[];
-          if (serviceSections.length > 0) {
-            setServices(serviceSections);
+        const data = await getHomepage();
+        if (data) {
+          setHomepageData(data);
+          if (data.contentSections) {
+            const serviceSections = data.contentSections.filter(
+              (section) => section.__component === 'sections.service'
+            ) as Service[];
+            if (serviceSections.length > 0) {
+              setServices(serviceSections);
+            } else {
+              // Use fallback data structure
+              setServices(fallbackServices.map((s, i) => ({
+                __component: 'sections.service',
+                id: i,
+                title: s.title,
+                description: s.description,
+              })));
+            }
           } else {
-            // Use fallback data structure
             setServices(fallbackServices.map((s, i) => ({
               __component: 'sections.service',
               id: i,
@@ -95,12 +106,14 @@ const Services = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">OUR WORK</p>
+          <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">
+            {loading ? 'Loading...' : homepageData?.servicesSectionTitle || 'OUR WORK'}
+          </p>
           <h2 className="text-2xl md:text-5xl font-bold text-foreground mb-6">
-            Practical, Application-Driven Programmes
+            {loading ? 'Loading...' : homepageData?.servicesSectionSubtitle || 'Practical, Application-Driven Programmes'}
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact.
+            {loading ? 'Loading...' : homepageData?.servicesSectionDescription || 'Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact.'}
           </p>
         </div>
 

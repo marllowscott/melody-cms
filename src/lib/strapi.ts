@@ -57,6 +57,9 @@ interface Homepage {
   heroOverlayOpacity?: number;
   heroLocalImage?: string;
   contentSections?: ContentSectionType[];
+  servicesSectionTitle?: string;
+  servicesSectionSubtitle?: string;
+  servicesSectionDescription?: string;
 }
 
 // Content Section Base
