@@ -3,23 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import React from "react";
 import Layout from "@/components/layout/Layout";
-import { getServicesPage, STRAPI_URL } from "@/lib/strapi";
+import { getServicesPage, STRAPI_URL, ServicesPage } from "@/lib/strapi";
 import { Check, Sparkles, Target } from "lucide-react";
-
-interface ServicesPageData {
-  id: number;
-  title: string;
-  subtitle?: string;
-  heroImage?: {
-    data: {
-      attributes: {
-        url: string;
-        alternativeText?: string;
-      };
-    };
-  };
-  contentSections?: any[];
-}
 
 const ClarityIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="w-8 h-8 text-primary">
@@ -69,7 +54,7 @@ const ConnectionIcon = () => (
 );
 
 const ServicesPage = () => {
-  const [pageData, setPageData] = useState<ServicesPageData | null>(null);
+  const [pageData, setPageData] = useState<ServicesPage | null>(null);
   const [loading, setLoading] = useState(true);
 
   const benefits = [
@@ -117,10 +102,15 @@ const ServicesPage = () => {
   const getImageUrl = () => {
     if (pageData?.heroImage?.data?.attributes?.url) {
       const url = pageData.heroImage.data.attributes.url;
-      return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+      return url?.startsWith('http') ? url : `${STRAPI_URL}${url}`;
     }
     return "/team.png";
   };
+
+  // Get hero title lines from CMS or fallback
+  const heroTitleLines = pageData?.heroTitle 
+    ? pageData.heroTitle.split('\n')
+    : ["Practical, Application-Driven", "Programmes"];
 
   return (
     <Layout>
@@ -132,12 +122,15 @@ const ServicesPage = () => {
               {loading ? 'Loading...' : pageData?.subtitle || 'OUR WORK'}
             </p>
             <h1 className="text-2xl md:text-5xl font-bold text-foreground mb-6 leading-tight break-words opacity-0 animate-fade-up delay-100 text-center">
-              {loading ? 'Loading...' : pageData?.title || 'Practical, Application-Driven'}
-              <br />
-              <span className="text-primary">Programmes</span>
+              {heroTitleLines.map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  {index < heroTitleLines.length - 1 && <br />}
+                </React.Fragment>
+              ))}
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-full md:max-w-2xl mx-auto text-center break-words opacity-0 animate-fade-up delay-200">
-              Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact.
+              {loading ? 'Loading...' : pageData?.heroDescription || 'Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact.'}
             </p>
           </div>
         </div>
@@ -151,12 +144,12 @@ const ServicesPage = () => {
             <div className="text-center md:text-left">
               <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">CORPORATE PROGRAMMES</p>
               <h2 className="text-2xl md:text-5xl font-bold text-foreground mb-6 text-center md:text-left">
-                Leadership<br />
-                Communication<br />
-                Development
+                {loading ? 'Loading...' : pageData?.benefitsTitle || 'Leadership'} <br />
+                {loading ? 'Loading...' : (pageData?.benefitsTitle ? '' : 'Communication')} <br />
+                {loading ? 'Loading...' : (pageData?.benefitsTitle ? '' : 'Development')}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                Our programmes strengthen how leaders communicate, show up and influence, particularly where clarity, confidence and credibility are critical.
+                {loading ? 'Loading...' : pageData?.benefitsDescription || 'Our programmes strengthen how leaders communicate, show up and influence, particularly where clarity, confidence and credibility are critical.'}
               </p>
 
               <ul className="space-y-4">
@@ -191,10 +184,10 @@ const ServicesPage = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">CLIENT-FACING & CUSTOMER ENGAGEMENT</p>
             <h2 className="text-2xl md:text-5xl font-bold text-foreground mb-6">
-              Building Confidence in Client Interactions
+              {loading ? 'Loading...' : pageData?.outcomesTitle || 'Building Confidence in Client Interactions'}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Programmes designed to enhance communication and presence in client-facing roles.
+              {loading ? 'Loading...' : pageData?.outcomesDescription || 'Programmes designed to enhance communication and presence in client-facing roles.'}
             </p>
           </div>
 
@@ -228,7 +221,7 @@ const ServicesPage = () => {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">DELIVERY FORMATS</p>
             <h2 className="text-2xl md:text-5xl font-bold text-foreground mb-6">
-              Flexible Delivery Options
+              {loading ? 'Loading...' : pageData?.processTitle || 'Flexible Delivery Options'}
             </h2>
           </div>
 
@@ -279,12 +272,12 @@ const ServicesPage = () => {
         <div className="w-full h-full flex items-center justify-center px-6">
           <div className="max-w-4xl text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ready to Partner
+              {loading ? 'Loading...' : pageData?.ctaTitle || 'Ready to Partner'}
               <br />
               <span className="block text-center">?</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals.
+              {loading ? 'Loading...' : pageData?.ctaDescription || "If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals."}
             </p>
             <Button
               asChild

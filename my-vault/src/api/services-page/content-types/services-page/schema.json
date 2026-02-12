@@ -38,6 +38,38 @@
         "sections.testimonial",
         "sections.number"
       ]
+    },
+    "heroTitle": {
+      "type": "string",
+      "default": "Practical, Application-Driven\nProgrammes"
+    },
+    "heroDescription": {
+      "type": "text"
+    },
+    "benefitsTitle": {
+      "type": "string",
+      "default": "Leadership Communication Development"
+    },
+    "benefitsDescription": {
+      "type": "text"
+    },
+    "outcomesTitle": {
+      "type": "string",
+      "default": "Building Confidence in Client Interactions"
+    },
+    "outcomesDescription": {
+      "type": "text"
+    },
+    "processTitle": {
+      "type": "string",
+      "default": "Flexible Delivery Options"
+    },
+    "ctaTitle": {
+      "type": "string",
+      "default": "Ready to Partner?"
+    },
+    "ctaDescription": {
+      "type": "text"
     }
   }
 }

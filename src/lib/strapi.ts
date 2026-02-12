@@ -185,6 +185,15 @@ interface ServicesPage {
     };
   };
   contentSections?: ContentSectionType[];
+  heroTitle?: string;
+  heroDescription?: string;
+  benefitsTitle?: string;
+  benefitsDescription?: string;
+  outcomesTitle?: string;
+  outcomesDescription?: string;
+  processTitle?: string;
+  ctaTitle?: string;
+  ctaDescription?: string;
 }
 
 interface ContactPage {

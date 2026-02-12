@@ -681,6 +681,9 @@ export interface ApiServicesPageServicesPage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    benefitsDescription: Schema.Attribute.Text;
+    benefitsTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Leadership Communication Development'>;
     contentSections: Schema.Attribute.DynamicZone<
       [
         'sections.service',
@@ -693,13 +696,24 @@ export interface ApiServicesPageServicesPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    ctaDescription: Schema.Attribute.Text;
+    ctaTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Ready to Partner?'>;
+    heroDescription: Schema.Attribute.Text;
     heroImage: Schema.Attribute.Media<'images'>;
+    heroTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Practical, Application-Driven\nProgrammes'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::services-page.services-page'
     > &
       Schema.Attribute.Private;
+    outcomesDescription: Schema.Attribute.Text;
+    outcomesTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Building Confidence in Client Interactions'>;
+    processTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Flexible Delivery Options'>;
     publishedAt: Schema.Attribute.DateTime;
     subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
