@@ -1,19 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getHomepage, STRAPI_URL, type NavLink } from "@/lib/strapi";
+
+const DEFAULT_NAV_LINKS = [
+  { path: "/", label: "Home" },
+  { path: "/services", label: "Our Work" },
+  { path: "/about", label: "Who We Serve" },
+  { path: "/book", label: "Speaking & Coaching" },
+  { path: "/contact", label: "Contact" },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [navLinks, setNavLinks] = useState(DEFAULT_NAV_LINKS);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
 
-  const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/services", label: "Our Work" },
-    { path: "/about", label: "Who We Serve" },
-    { path: "/book", label: "Speaking & Coaching" },
-    { path: "/contact", label: "Contact" },
-  ];
+  useEffect(() => {
+    const fetchNavLinks = async () => {
+      try {
+        const data = await getHomepage();
+        if (data?.navbar && Array.isArray(data.navbar)) {
+          const cmsLinks = data.navbar.map((link: NavLink) => ({
+            path: link.href || "/",
+            label: link.text
+          }));
+          setNavLinks(cmsLinks.length > 0 ? cmsLinks : DEFAULT_NAV_LINKS);
+        }
+      } catch (error) {
+        console.error('Error fetching nav links:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNavLinks();
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 

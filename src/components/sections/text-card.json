@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_text_cards",
+  "info": {
+    "displayName": "Text Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "cards": {
+      "type": "component",
+      "component": "sections.card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

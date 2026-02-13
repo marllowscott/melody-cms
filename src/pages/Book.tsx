@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, Clock, Video } from "lucide-react";
-import { getBookPage, STRAPI_URL, BookPage } from "@/lib/strapi";
+import { getBookPage, STRAPI_URL, type BookPage, type FeatureItem } from "@/lib/strapi";
 import { useEffect } from "react";
 
 const Book = () => {
@@ -68,7 +68,7 @@ const Book = () => {
     }
   };
 
-  const features = [
+  const fallbackFeatures = [
     {
       title: "Executive Coaching – BOLD SPEAKING",
       description: "One-on-one coaching focused on confidence, communication, presence and leadership visibility.",
@@ -82,6 +82,13 @@ const Book = () => {
       description: "Keynote topics on leadership confidence, communication with impact, executive presence, and leadership visibility.",
     },
   ];
+
+  const getFeaturesList = () => {
+    if (pageData?.features && Array.isArray(pageData.features) && pageData.features.length > 0) {
+      return pageData.features;
+    }
+    return fallbackFeatures;
+  };
 
   return (
     <Layout>
@@ -105,7 +112,7 @@ const Book = () => {
 
           {/* Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
-            {features.map((feature, index) => (
+            {getFeaturesList().map((feature, index) => (
               <div
                 key={index}
                 className="group bg-card rounded-lg p-8 border-2 border-primary/20 hover:border-primary/80 transition-all duration-300 relative text-center animate-border-flash"

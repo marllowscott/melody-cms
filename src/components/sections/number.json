@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_numbers",
+  "info": {
+    "displayName": "Number"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "numberItems": {
+      "type": "component",
+      "component": "sections.number-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -260,8 +260,15 @@ interface ContactPage {
 }
 
 // Book Page Type
+interface FeatureItem {
+  id?: number;
+  title: string;
+  description?: string;
+}
+
 interface BookPage {
   id: number;
+  title?: string;
   subtitle?: string;
   heroTitle?: string;
   heroDescription?: string;
@@ -270,6 +277,7 @@ interface BookPage {
       attributes: MediaFile;
     };
   };
+  features?: FeatureItem[];
   formTitle?: string;
   formDescription?: string;
   formSubmitText?: string;
@@ -334,4 +342,4 @@ export async function getBookPage(): Promise<BookPage | null> {
 }
 
 export { STRAPI_URL };
-export type { Homepage, AboutPage, ServicesPage, ContactPage, BookPage };
+export type { Homepage, AboutPage, ServicesPage, ContactPage, BookPage, FeatureItem, NavLink, Button };

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_outcome_items",
+  "info": {
+    "displayName": "Outcome Item",
+    "description": "Individual outcome item with icon, title, and description"
+  },
+  "attributes": {
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "ClarityIcon",
+        "ConfidenceIcon",
+        "ConnectionIcon"
+      ],
+      "default": "ClarityIcon"
+    },
+    "title": {
+      "type": "string",
+      "default": "Title"
+    },
+    "description": {
+      "type": "text",
+      "default": "Description text"
+    }
+  }
+}

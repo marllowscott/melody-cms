@@ -1,0 +1,107 @@
+{
+  "kind": "singleType",
+  "collectionName": "services_pages",
+  "info": {
+    "singularName": "services-page",
+    "pluralName": "services-pages",
+    "displayName": "Services Page",
+    "description": "Our Work / Services page with programmes, benefits, outcomes, delivery options and CTA"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "default": "OUR WORK"
+    },
+    "heroTitle": {
+      "type": "text",
+      "default": "Practical, Application-Driven\nProgrammes"
+    },
+    "heroDescription": {
+      "type": "text",
+      "default": "Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact."
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "benefitsSubtitle": {
+      "type": "string",
+      "default": "CORPORATE PROGRAMMES"
+    },
+    "benefitsTitle": {
+      "type": "text",
+      "default": "Leadership\nCommunication\nDevelopment"
+    },
+    "benefitsDescription": {
+      "type": "text",
+      "default": "Our programmes strengthen how leaders communicate, show up and influence, particularly where clarity, confidence and credibility are critical."
+    },
+    "benefitsList": {
+      "type": "text",
+      "default": "Leadership Communication & Executive Presence: Strengthen how leaders communicate and show up in high-stakes environments. Ideal for executives and senior leaders.\nPublic Speaking for Leaders: Master the art of delivering impactful presentations and speeches. Ideal for leaders who need to influence and inspire audiences.\nLeadership Visibility & Stakeholder Presence: Enhance visibility and build stronger stakeholder relationships. Ideal for leaders focused on influence and networking.\nExecutive Presence [including professional image & etiquette]: Develop the gravitas and authority that commands attention. Ideal for professionals building executive presence."
+    },
+    "outcomesSubtitle": {
+      "type": "string",
+      "default": "CLIENT-FACING & CUSTOMER ENGAGEMENT"
+    },
+    "outcomesTitle": {
+      "type": "string",
+      "default": "Building Confidence in Client Interactions"
+    },
+    "outcomesDescription": {
+      "type": "text",
+      "default": "Programmes designed to enhance communication and presence in client-facing roles."
+    },
+    "outcomesList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.outcome-item"
+    },
+    "processSubtitle": {
+      "type": "string",
+      "default": "DELIVERY FORMATS"
+    },
+    "processTitle": {
+      "type": "string",
+      "default": "Flexible Delivery Options"
+    },
+    "processList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.process-item"
+    },
+    "ctaTitle": {
+      "type": "string",
+      "default": "Ready to Partner?"
+    },
+    "ctaButtonText": {
+      "type": "string",
+      "default": "Request a Conversation"
+    },
+    "ctaDescription": {
+      "type": "text",
+      "default": "If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals."
+    },
+    "contentSections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.service",
+        "sections.text-card",
+        "sections.text-image",
+        "sections.testimonial",
+        "sections.number"
+      ]
+    }
+  }
+}

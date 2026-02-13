@@ -1,0 +1,106 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage",
+    "description": "Main homepage with hero, services, about, testimonials sections"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "navbar": {
+      "type": "component",
+      "component": "general.navlink",
+      "repeatable": true
+    },
+    "heroTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Show up with confidence.\nCommunicate with clarity.\nLead with presence."
+    },
+    "heroSubtitle": {
+      "type": "text",
+      "default": "We support leaders, professionals and client-facing teams to communicate effectively in high-stakes environments — strengthening leadership communication, executive presence and professional visibility."
+    },
+    "heroButtons": {
+      "type": "component",
+      "component": "general.button",
+      "repeatable": true
+    },
+    "heroBackgroundType": {
+      "type": "enumeration",
+      "enum": [
+        "image",
+        "local",
+        "color"
+      ],
+      "default": "local"
+    },
+    "heroBackgroundColor": {
+      "type": "string",
+      "regex": "^#[0-9A-Fa-f]{6}$",
+      "required": false
+    },
+    "heroOverlayColor": {
+      "type": "string",
+      "default": "#060621",
+      "required": false
+    },
+    "heroOverlayOpacity": {
+      "type": "decimal",
+      "min": 0,
+      "max": 1,
+      "default": 0.7,
+      "required": false
+    },
+    "heroLocalImage": {
+      "type": "string",
+      "required": false
+    },
+    "heroImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "servicesSectionTitle": {
+      "type": "string",
+      "default": "OUR WORK"
+    },
+    "servicesSectionSubtitle": {
+      "type": "string",
+      "default": "Practical, Application-Driven Programmes"
+    },
+    "servicesSectionDescription": {
+      "type": "text",
+      "default": "Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact."
+    },
+    "contentSections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.text-card",
+        "sections.number",
+        "sections.text-image",
+        "sections.about-section",
+        "sections.service",
+        "sections.testimonial"
+      ]
+    }
+  }
+}

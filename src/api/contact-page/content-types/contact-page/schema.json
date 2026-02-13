@@ -1,0 +1,87 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_pages",
+  "info": {
+    "singularName": "contact-page",
+    "pluralName": "contact-pages",
+    "displayName": "Contact Page",
+    "description": "Contact page with hero, contact info, form and CTA"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "default": "CONTACT"
+    },
+    "title": {
+      "type": "string",
+      "default": "Get in Touch"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "email1": {
+      "type": "email",
+      "default": "info@audaxleadership.com"
+    },
+    "email2": {
+      "type": "email",
+      "default": "team@audaxleadership.com"
+    },
+    "email3": {
+      "type": "email",
+      "default": "melody@audaxleadership.com"
+    },
+    "phone": {
+      "type": "string",
+      "default": "+263 73 540 2184"
+    },
+    "linkedinUrl": {
+      "type": "string",
+      "default": "https://www.linkedin.com/in/melody-chipo-njanji-makuwaza-65b1782a"
+    },
+    "facebookUrl": {
+      "type": "string",
+      "default": "https://www.facebook.com/DialoguesWithMel"
+    },
+    "instagramUrl": {
+      "type": "string",
+      "default": "https://www.instagram.com/dialogueswithmel/"
+    },
+    "formTitle": {
+      "type": "string",
+      "default": "Send a Message"
+    },
+    "formDescription": {
+      "type": "text",
+      "default": "If you are developing leaders, strengthening client-facing capability or looking for a speaker or facilitator, we would be glad to explore how we can support your goals."
+    },
+    "formSubmitText": {
+      "type": "string",
+      "default": "Send Message"
+    },
+    "successMessage": {
+      "type": "text",
+      "default": "I'll get back to you as soon as possible."
+    },
+    "contentSections": {
+      "type": "dynamiczone",
+      "components": [
+        "sections.text-image",
+        "sections.text-card",
+        "sections.testimonial"
+      ]
+    }
+  }
+}
