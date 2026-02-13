@@ -114,16 +114,8 @@ interface OutcomeItem {
   description?: string;
 }
 
-// Values List Item Component
+// Values List Item (plain JSON type)
 interface ValuesItem {
-  id: number;
-  __component: 'sections.values-item';
-  title?: string;
-  description?: string;
-}
-
-// Values List Item (legacy - for backward compatibility)
-interface ValuesListItem {
   id: number;
   title?: string;
   description?: string;
@@ -208,7 +200,7 @@ interface AboutPage {
   };
   valuesSubtitle?: string;
   valuesTitle?: string;
-  valuesList?: (ValuesItem | ValuesListItem)[];
+  valuesList?: ValuesItem[];
   ctaTitle?: string;
   ctaDescription?: string;
   ctaButtonText?: string;
