@@ -5,6 +5,8 @@ import { getHomepage, STRAPI_URL } from "@/lib/strapi";
 interface Testimonial {
   __component: string;
   id: number;
+  sectionTitle?: string;
+  sectionSubtitle?: string;
   quote: string;
   name: string;
   title?: string;
@@ -12,11 +14,15 @@ interface Testimonial {
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [sectionTitle, setSectionTitle] = useState<string>("CLIENT STORIES");
+  const [sectionSubtitle, setSectionSubtitle] = useState<string>("Voices of Transformation");
   const [loading, setLoading] = useState(true);
 
   // Fallback static data
   const fallbackTestimonials = [
     {
+      sectionTitle: "CLIENT STORIES",
+      sectionSubtitle: "Voices of Transformation",
       quote: "Working with Melody transformed my career. I went from dreading presentations to actively seeking speaking opportunities.",
       name: "Sarah Chen",
       title: "VP of Marketing, TechCorp",
@@ -37,12 +43,28 @@ const Testimonials = () => {
     const fetchData = async () => {
       try {
         const homepageData = await getHomepage();
+        
+        // Get section title from homepage directly
+        if (homepageData?.testimonialsSectionTitle) {
+          setSectionTitle(homepageData.testimonialsSectionTitle);
+        }
+        if (homepageData?.testimonialsSectionSubtitle) {
+          setSectionSubtitle(homepageData.testimonialsSectionSubtitle);
+        }
+        
         if (homepageData?.contentSections) {
           const testimonialSections = homepageData.contentSections.filter(
-            (section) => section.__component === 'sections.testimonial'
+            (section: any) => section.__component === 'sections.testimonial'
           ) as Testimonial[];
           if (testimonialSections.length > 0) {
             setTestimonials(testimonialSections);
+            // Override with testimonial-specific title if available
+            if (testimonialSections[0].sectionTitle && !homepageData?.testimonialsSectionTitle) {
+              setSectionTitle(testimonialSections[0].sectionTitle);
+            }
+            if (testimonialSections[0].sectionSubtitle && !homepageData?.testimonialsSectionSubtitle) {
+              setSectionSubtitle(testimonialSections[0].sectionSubtitle);
+            }
           } else {
             setTestimonials(fallbackTestimonials.map((t, i) => ({
               __component: 'sections.testimonial',
@@ -80,16 +102,12 @@ const Testimonials = () => {
 
   return (
     <section className="py-24 bg-secondary relative">
-      {/* Background Image */}
-      <div className="absolute inset-0 bg-cover bg-center hidden md:block" style={{ backgroundImage: 'url(/voices-of-transformation.jpg)' }}>
-        <div className="absolute inset-0 bg-black/50"></div>
-      </div>
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">CLIENT STORIES</p>
-          <h2 className="text-2xl md:text-5xl font-bold text-foreground mb-6 text-center md:text-left">
-            Voices of Transformation
+          <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">{sectionTitle}</p>
+          <h2 className="text-2xl md:text-5xl font-bold text-foreground mb-6 text-center">
+            {sectionSubtitle}
           </h2>
         </div>
 

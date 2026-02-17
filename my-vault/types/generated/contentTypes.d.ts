@@ -470,6 +470,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
   collectionName: 'about_pages';
   info: {
+    description: 'Who We Serve page with hero, values/outcomes section and CTA';
     displayName: 'About Page';
     pluralName: 'about-pages';
     singularName: 'about-page';
@@ -483,8 +484,11 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    audienceList: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Corporates and financial institutions\nPublic sector and NGOs\nLeadership teams and executives\nProfessionals and emerging leaders'>;
     contentSections: Schema.Attribute.DynamicZone<
       [
+        'sections.values-section',
         'sections.text-card',
         'sections.text-image',
         'sections.number',
@@ -494,6 +498,16 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    ctaButtonLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    ctaButtonText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Request a Conversation'>;
+    ctaDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<"If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals.">;
+    ctaTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Ready to Partner?'>;
+    heroDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Our work is particularly suited to technically strong leaders whose impact depends on effective communication and presence.'>;
     heroImage: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -502,17 +516,25 @@ export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'WHO WE SERVE'>;
+    title: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Partners in Leadership\nDevelopment'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    valuesList: Schema.Attribute.Component<'sections.values-item', true>;
+    valuesSubtitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'STRATEGIC OUTCOMES'>;
+    valuesTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'What We Achieve'>;
   };
 }
 
 export interface ApiBookPageBookPage extends Struct.SingleTypeSchema {
   collectionName: 'book_pages';
   info: {
+    description: 'Speaking & Coaching page with hero, features section, form and CTA';
     displayName: 'Book Page';
     pluralName: 'book-pages';
     singularName: 'book-page';
@@ -526,9 +548,9 @@ export interface ApiBookPageBookPage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    bookingLink: Schema.Attribute.String;
     contentSections: Schema.Attribute.DynamicZone<
       [
+        'sections.feature-item',
         'sections.text-image',
         'sections.text-card',
         'sections.testimonial',
@@ -538,16 +560,33 @@ export interface ApiBookPageBookPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    formDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<"Interested in coaching or speaking? Let's discuss how we can work together.">;
+    formResponseMessage: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'I typically respond within 24-48 hours.'>;
+    formSubmitText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Submit Inquiry'>;
+    formTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Get In Touch'>;
+    heroDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Melody specialises in leadership communication, executive presence and visibility. She works with executives, professionals and emerging leaders to strengthen how they show up, communicate and influence, particularly in meetings, presentations, client engagements and other high-stakes moments.'>;
     heroImage: Schema.Attribute.Media<'images'>;
+    heroTitle: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Melody\nConfidence Coach &\nLeadership Consultant'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::book-page.book-page'
     > &
       Schema.Attribute.Private;
+    privacyPolicyLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    privacyPolicyText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Privacy Policy'>;
     publishedAt: Schema.Attribute.DateTime;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'SPEAKING & COACHING'>;
+    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Melody'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -557,6 +596,7 @@ export interface ApiBookPageBookPage extends Struct.SingleTypeSchema {
 export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   collectionName: 'contact_pages';
   info: {
+    description: 'Contact page with hero, contact info, form and CTA';
     displayName: 'Contact Page';
     pluralName: 'contact-pages';
     singularName: 'contact-page';
@@ -570,26 +610,111 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    address: Schema.Attribute.Text;
     contentSections: Schema.Attribute.DynamicZone<
       ['sections.text-image', 'sections.text-card', 'sections.testimonial']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
+    email1: Schema.Attribute.Email &
+      Schema.Attribute.DefaultTo<'info@audaxleadership.com'>;
+    email2: Schema.Attribute.Email &
+      Schema.Attribute.DefaultTo<'team@audaxleadership.com'>;
+    email3: Schema.Attribute.Email &
+      Schema.Attribute.DefaultTo<'melody@audaxleadership.com'>;
+    facebookUrl: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'https://www.facebook.com/DialoguesWithMel'>;
+    formDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'If you are developing leaders, strengthening client-facing capability or looking for a speaker or facilitator, we would be glad to explore how we can support your goals.'>;
+    formSubmitText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Send Message'>;
+    formTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Send a Message'>;
     heroImage: Schema.Attribute.Media<'images'>;
+    instagramUrl: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'https://www.instagram.com/dialogueswithmel/'>;
+    linkedinUrl: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'https://www.linkedin.com/in/melody-chipo-njanji-makuwaza-65b1782a'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::contact-page.contact-page'
     > &
       Schema.Attribute.Private;
-    phone: Schema.Attribute.String;
+    phone: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'+263 73 540 2184'>;
+    privacyPolicyLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    privacyPolicyText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Privacy Policy'>;
     publishedAt: Schema.Attribute.DateTime;
-    socialLinks: Schema.Attribute.JSON;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String & Schema.Attribute.DefaultTo<'CONTACT'>;
+    successMessage: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<"I'll get back to you as soon as possible.">;
+    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Get in Touch'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
+  collectionName: 'globals';
+  info: {
+    description: 'Site-wide settings for header, footer, and global content';
+    displayName: 'Global Settings';
+    pluralName: 'globals';
+    singularName: 'global';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: false;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctaButtonLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    ctaButtonText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Request a Conversation'>;
+    ctaDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<"Let's explore how we can support your leadership development and communication goals.">;
+    ctaTitle: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Ready to Elevate Your\nLeadership Impact?'>;
+    defaultSeoDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'We support leaders, professionals and client-facing teams to communicate effectively in high-stakes environments.'>;
+    defaultSeoKeywords: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'leadership communication, executive presence, professional development, public speaking, confidence coaching'>;
+    defaultSeoTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Audax Leadership - Leadership Communication & Executive Presence'>;
+    footerCopyrightName: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Dialogues With Mel'>;
+    footerDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Empowering professionals to communicate with confidence, clarity, and impact. Transform how you connect with the world.'>;
+    headerCtaLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    headerCtaText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Request a Conversation'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::global.global'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'>;
+    logoAlt: Schema.Attribute.Media<'images'>;
+    privacyPolicyLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    publishedAt: Schema.Attribute.DateTime;
+    siteName: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Audax Leadership'>;
+    termsOfServiceLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -626,6 +751,14 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    ctaButtonLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    ctaButtonText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Request a Conversation'>;
+    ctaDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<"Let's explore how we can support your leadership development and communication goals.">;
+    ctaTitle: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Ready to Elevate Your\nLeadership Impact?'>;
     heroBackgroundColor: Schema.Attribute.String;
     heroBackgroundType: Schema.Attribute.Enumeration<
       ['image', 'local', 'color']
@@ -661,10 +794,18 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     servicesSectionDescription: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<'Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact.'>;
+    servicesSectionLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/services'>;
+    servicesSectionLinkText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'View All Services'>;
     servicesSectionSubtitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Practical, Application-Driven Programmes'>;
     servicesSectionTitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'OUR WORK'>;
+    testimonialsSectionSubtitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Voices of Transformation'>;
+    testimonialsSectionTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CLIENT STORIES'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -674,6 +815,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
 export interface ApiServicesPageServicesPage extends Struct.SingleTypeSchema {
   collectionName: 'services_pages';
   info: {
+    description: 'Our Work / Services page with programmes, benefits, outcomes, delivery options and CTA';
     displayName: 'Services Page';
     pluralName: 'services-pages';
     singularName: 'services-page';
@@ -687,9 +829,14 @@ export interface ApiServicesPageServicesPage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
-    benefitsDescription: Schema.Attribute.Text;
-    benefitsTitle: Schema.Attribute.String &
-      Schema.Attribute.DefaultTo<'Leadership Communication Development'>;
+    benefitsDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Our programmes strengthen how leaders communicate, show up and influence, particularly where clarity, confidence and credibility are critical.'>;
+    benefitsList: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Leadership Communication & Executive Presence: Strengthen how leaders communicate and show up in high-stakes environments. Ideal for executives and senior leaders.\nPublic Speaking for Leaders: Master the art of delivering impactful presentations and speeches. Ideal for leaders who need to influence and inspire audiences.\nLeadership Visibility & Stakeholder Presence: Enhance visibility and build stronger stakeholder relationships. Ideal for leaders focused on influence and networking.\nExecutive Presence [including professional image & etiquette]: Develop the gravitas and authority that commands attention. Ideal for professionals building executive presence.'>;
+    benefitsSubtitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CORPORATE PROGRAMMES'>;
+    benefitsTitle: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Leadership\nCommunication\nDevelopment'>;
     contentSections: Schema.Attribute.DynamicZone<
       [
         'sections.service',
@@ -702,12 +849,18 @@ export interface ApiServicesPageServicesPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    ctaDescription: Schema.Attribute.Text;
+    ctaButtonLink: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'/contact'>;
+    ctaButtonText: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Request a Conversation'>;
+    ctaDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<"If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals.">;
     ctaTitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Ready to Partner?'>;
-    heroDescription: Schema.Attribute.Text;
+    heroDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact.'>;
     heroImage: Schema.Attribute.Media<'images'>;
-    heroTitle: Schema.Attribute.String &
+    heroTitle: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<'Practical, Application-Driven\nProgrammes'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -715,14 +868,20 @@ export interface ApiServicesPageServicesPage extends Struct.SingleTypeSchema {
       'api::services-page.services-page'
     > &
       Schema.Attribute.Private;
-    outcomesDescription: Schema.Attribute.Text;
+    outcomesDescription: Schema.Attribute.Text &
+      Schema.Attribute.DefaultTo<'Programmes designed to enhance communication and presence in client-facing roles.'>;
+    outcomesList: Schema.Attribute.Component<'sections.outcome-item', true>;
+    outcomesSubtitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CLIENT-FACING & CUSTOMER ENGAGEMENT'>;
     outcomesTitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Building Confidence in Client Interactions'>;
+    processList: Schema.Attribute.Component<'sections.process-item', true>;
+    processSubtitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'DELIVERY FORMATS'>;
     processTitle: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Flexible Delivery Options'>;
     publishedAt: Schema.Attribute.DateTime;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String & Schema.Attribute.DefaultTo<'OUR WORK'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1244,6 +1403,7 @@ declare module '@strapi/strapi' {
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::book-page.book-page': ApiBookPageBookPage;
       'api::contact-page.contact-page': ApiContactPageContactPage;
+      'api::global.global': ApiGlobalGlobal;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::services-page.services-page': ApiServicesPageServicesPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;

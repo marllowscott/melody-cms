@@ -1,0 +1,106 @@
+{
+  "kind": "singleType",
+  "collectionName": "globals",
+  "info": {
+    "singularName": "global",
+    "pluralName": "globals",
+    "displayName": "Global Settings",
+    "description": "Site-wide settings for header, footer, and global content"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "default": "Audax Leadership",
+      "description": "The name of the website/company"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "description": "Main site logo"
+    },
+    "logoAlt": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "description": "Alternative/footer logo"
+    },
+    "headerCtaText": {
+      "type": "string",
+      "default": "Request a Conversation",
+      "description": "CTA button text in the header"
+    },
+    "headerCtaLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "CTA button link in the header"
+    },
+    "footerDescription": {
+      "type": "text",
+      "default": "Empowering professionals to communicate with confidence, clarity, and impact. Transform how you connect with the world.",
+      "description": "Description text in the footer"
+    },
+    "footerCopyrightName": {
+      "type": "string",
+      "default": "Dialogues With Mel",
+      "description": "Company name for copyright"
+    },
+    "privacyPolicyLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "Link to privacy policy page"
+    },
+    "termsOfServiceLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "Link to terms of service page"
+    },
+    "defaultSeoTitle": {
+      "type": "string",
+      "default": "Audax Leadership - Leadership Communication & Executive Presence",
+      "description": "Default SEO title for the site"
+    },
+    "defaultSeoDescription": {
+      "type": "text",
+      "default": "We support leaders, professionals and client-facing teams to communicate effectively in high-stakes environments.",
+      "description": "Default SEO meta description"
+    },
+    "defaultSeoKeywords": {
+      "type": "text",
+      "default": "leadership communication, executive presence, professional development, public speaking, confidence coaching",
+      "description": "Default SEO keywords"
+    },
+    "ctaTitle": {
+      "type": "text",
+      "default": "Ready to Elevate Your\nLeadership Impact?",
+      "description": "Pre-footer CTA title"
+    },
+    "ctaDescription": {
+      "type": "text",
+      "default": "Let's explore how we can support your leadership development and communication goals.",
+      "description": "Pre-footer CTA description"
+    },
+    "ctaButtonText": {
+      "type": "string",
+      "default": "Request a Conversation",
+      "description": "Pre-footer CTA button text"
+    },
+    "ctaButtonLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "Pre-footer CTA button link"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "homepage": {
+    "heroTitle": "1. SHOW UP WITH CONFIDENCE\n2. COMMUNICATE WITH CLARITY\n3. LEAD WITH PRESENCE",
+    "heroSubtitle": "1. We support leaders, professionals and client-facing teams to communicate effectively in high-stakes environments — strengthening leadership communication, executive presence and professional visibility. EDIT THIS FIELD IN STRAPI.",
+    "heroBackgroundType": "local",
+    "heroOverlayColor": "#060621",
+    "heroOverlayOpacity": 0.88,
+    "servicesSectionTitle": "1. OUR WORK - EDIT IN STRAPI",
+    "servicesSectionSubtitle": "2. Practical, Application-Driven Programmes - EDIT IN STRAPI",
+    "servicesSectionDescription": "3. Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact. EDIT THIS FIELD IN STRAPI.",
+    "servicesSectionLink": "/services",
+    "servicesSectionLinkText": "View All Services - EDIT",
+    "testimonialsSectionTitle": "1. CLIENT STORIES - EDIT IN STRAPI",
+    "testimonialsSectionSubtitle": "2. Voices of Transformation - EDIT IN STRAPI",
+    "ctaTitle": "1. Ready to Elevate Your\nLeadership Impact? - EDIT IN STRAPI",
+    "ctaDescription": "1. Let's explore how we can support your leadership development and communication goals. EDIT IN STRAPI.",
+    "ctaButtonText": "1. Request a Conversation - EDIT IN STRAPI",
+    "ctaButtonLink": "/contact",
+    "contentSections": [
+      {
+        "__component": "sections.service",
+        "title": "1. Leadership Communication & Executive Presence - EDIT IN STRAPI",
+        "description": "1. Strengthen how leaders communicate and show up in high-stakes environments. Ideal for executives and senior leaders. EDIT THIS."
+      },
+      {
+        "__component": "sections.service", 
+        "title": "2. Public Speaking for Leaders - EDIT IN STRAPI",
+        "description": "2. Master the art of delivering impactful presentations and speeches. Ideal for leaders who need to influence and inspire audiences. EDIT THIS."
+      },
+      {
+        "__component": "sections.service",
+        "title": "3. Confident Communication for Client-Facing Teams - EDIT IN STRAPI",
+        "description": "3. Build confidence and presence in client interactions. Ideal for professionals in sales, consulting, and customer service. EDIT THIS."
+      }
+    ]
+  },
+  "about-page": {
+    "subtitle": "1. WHO WE SERVE - EDIT IN STRAPI",
+    "title": "1. Partners in Leadership\n2. Development - EDIT IN STRAPI",
+    "heroDescription": "1. Our work is particularly suited to technically strong leaders whose impact depends on effective communication and presence. EDIT THIS IN STRAPI.",
+    "audienceList": "1. Corporates and financial institutions\n2. Public sector and NGOs\n3. Leadership teams and executives\n4. Professionals and emerging leaders - EDIT IN STRAPI",
+    "valuesSubtitle": "1. STRATEGIC OUTCOMES - EDIT IN STRAPI",
+    "valuesTitle": "1. What We Achieve - EDIT IN STRAPI",
+    "ctaTitle": "1. Ready to Partner? - EDIT IN STRAPI",
+    "ctaDescription": "1. If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals. EDIT THIS IN STRAPI.",
+    "ctaButtonText": "1. Request a Conversation - EDIT IN STRAPI",
+    "ctaButtonLink": "/contact"
+  },
+  "services-page": {
+    "subtitle": "1. OUR WORK - EDIT IN STRAPI",
+    "heroTitle": "1. Practical, Application-Driven\n2. Programmes - EDIT IN STRAPI",
+    "heroDescription": "1. Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact. EDIT THIS IN STRAPI.",
+    "benefitsSubtitle": "1. CORPORATE PROGRAMMES - EDIT IN STRAPI",
+    "benefitsTitle": "1. Leadership\n2. Communication\n3. Development - EDIT IN STRAPI",
+    "benefitsDescription": "1. Our programmes strengthen how leaders communicate, show up and influence, particularly where clarity, confidence and credibility are critical. EDIT THIS IN STRAPI.",
+    "outcomesSubtitle": "1. CLIENT-FACING & CUSTOMER ENGAGEMENT - EDIT IN STRAPI",
+    "outcomesTitle": "1. Building Confidence in Client Interactions - EDIT IN STRAPI",
+    "outcomesDescription": "1. Programmes designed to enhance communication and presence in client-facing roles. EDIT THIS IN STRAPI.",
+    "processSubtitle": "1. DELIVERY FORMATS - EDIT IN STRAPI",
+    "processTitle": "1. Flexible Delivery Options - EDIT IN STRAPI",
+    "ctaTitle": "1. Ready to Partner? - EDIT IN STRAPI",
+    "ctaDescription": "1. If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals. EDIT THIS IN STRAPI.",
+    "ctaButtonText": "1. Request a Conversation - EDIT IN STRAPI",
+    "ctaButtonLink": "/contact"
+  },
+  "book-page": {
+    "subtitle": "1. SPEAKING & COACHING - EDIT IN STRAPI",
+    "heroTitle": "1. Melody\n2. Confidence Coach &\n3. Leadership Consultant - EDIT IN STRAPI",
+    "heroDescription": "1. Melody specialises in leadership communication, executive presence and visibility. She works with executives, professionals and emerging leaders to strengthen how they show up, communicate and influence, particularly in meetings, presentations, client engagements and other high-stakes moments. EDIT THIS IN STRAPI.",
+    "title": "1. Melody - EDIT IN STRAPI",
+    "formTitle": "1. Get In Touch - EDIT IN STRAPI",
+    "formDescription": "1. Interested in coaching or speaking? Let's discuss how we can work together. EDIT THIS IN STRAPI.",
+    "formSubmitText": "1. Submit Inquiry - EDIT IN STRAPI",
+    "formResponseMessage": "1. I typically respond within 24-48 hours. EDIT THIS IN STRAPI.",
+    "privacyPolicyText": "1. Privacy Policy - EDIT IN STRAPI",
+    "privacyPolicyLink": "/contact",
+    "contentSections": [
+      {
+        "__component": "sections.feature-item",
+        "title": "1. Executive Coaching – BOLD SPEAKING - EDIT IN STRAPI",
+        "description": "1. One-on-one coaching focused on confidence, communication, presence and leadership visibility. EDIT THIS."
+      },
+      {
+        "__component": "sections.feature-item",
+        "title": "2. Open Programmes - EDIT IN STRAPI", 
+        "description": "2. BOLD SPEAKING – Group Coaching and English Fluency & Confident Communication. EDIT THIS."
+      },
+      {
+        "__component": "sections.feature-item",
+        "title": "3. Speaking Engagements - EDIT IN STRAPI",
+        "description": "3. Keynote topics on leadership confidence, communication with impact, executive presence, and leadership visibility. EDIT THIS."
+      }
+    ]
+  },
+  "contact-page": {
+    "subtitle": "1. CONTACT - EDIT IN STRAPI",
+    "title": "1. Get in Touch - EDIT IN STRAPI",
+    "phone": "1. +263 73 540 2184 - EDIT IN STRAPI",
+    "linkedinUrl": "1. https://www.linkedin.com/in/melody-chipo-njanji-makuwaza-65b1782a - EDIT IN STRAPI",
+    "facebookUrl": "1. https://www.facebook.com/DialoguesWithMel - EDIT IN STRAPI",
+    "instagramUrl": "1. https://www.instagram.com/dialogueswithmel/ - EDIT IN STRAPI",
+    "formTitle": "1. Send a Message - EDIT IN STRAPI",
+    "formDescription": "1. If you are developing leaders, strengthening client-facing capability or looking for a speaker or facilitator, we would be glad to explore how we can support your goals. EDIT THIS IN STRAPI.",
+    "formSubmitText": "1. Send Message - EDIT IN STRAPI",
+    "successMessage": "1. I'll get back to you as soon as possible. EDIT THIS IN STRAPI.",
+    "privacyPolicyText": "1. Privacy Policy - EDIT IN STRAPI",
+    "privacyPolicyLink": "/contact"
+  },
+  "global": {
+    "siteName": "1. Audax Leadership - EDIT IN STRAPI",
+    "headerCtaText": "1. Request a Conversation - EDIT IN STRAPI",
+    "headerCtaLink": "/contact",
+    "footerDescription": "1. Empowering professionals to communicate with confidence, clarity, and impact. Transform how you connect with the world. EDIT THIS IN STRAPI.",
+    "footerCopyrightName": "1. Dialogues With Mel - EDIT IN STRAPI",
+    "privacyPolicyLink": "/contact",
+    "defaultSeoTitle": "1. Audax Leadership - Leadership Communication & Executive Presence - EDIT IN STRAPI",
+    "defaultSeoDescription": "1. We support leaders, professionals and client-facing teams to communicate effectively in high-stakes environments. EDIT THIS IN STRAPI.",
+    "defaultSeoKeywords": "1. leadership communication, executive presence, professional development, public speaking, confidence coaching - EDIT IN STRAPI"
+  }
+}

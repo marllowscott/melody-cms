@@ -27,6 +27,8 @@ interface NavLink {
   id: number;
   text: string;
   href: string;
+  label?: string;
+  path?: string;
 }
 
 interface Button {
@@ -148,6 +150,13 @@ interface TextImageSection extends BaseContentSection {
   };
 }
 
+// Feature Item Component
+interface FeatureItemComponent extends BaseContentSection {
+  __component: 'sections.feature-item';
+  title: string;
+  description: string;
+}
+
 // Union type for all content sections
 type ContentSectionType = 
   | TextCardSection
@@ -156,6 +165,7 @@ type ContentSectionType =
   | AboutSection
   | Service
   | Testimonial
+  | FeatureItemComponent
   | ValuesItem;
 
 // Homepage Type
@@ -180,10 +190,18 @@ interface Homepage {
   heroOverlayColor?: string;
   heroOverlayOpacity?: number;
   heroLocalImage?: string;
-  contentSections?: ContentSectionType[];
   servicesSectionTitle?: string;
   servicesSectionSubtitle?: string;
   servicesSectionDescription?: string;
+  servicesSectionLink?: string;
+  servicesSectionLinkText?: string;
+  testimonialsSectionTitle?: string;
+  testimonialsSectionSubtitle?: string;
+  contentSections?: ContentSectionType[];
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaButtonText?: string;
+  ctaButtonLink?: string;
 }
 
 // About Page Type
@@ -341,5 +359,43 @@ export async function getBookPage(): Promise<BookPage | null> {
   return data.data;
 }
 
+// Global Settings Type
+export interface GlobalSettings {
+  id: number;
+  siteName?: string;
+  logo?: { data: { attributes: MediaFile } };
+  logoAlt?: { data: { attributes: MediaFile } };
+  headerCtaText?: string;
+  headerCtaLink?: string;
+  footerDescription?: string;
+  footerCopyrightName?: string;
+  privacyPolicyLink?: string;
+  termsOfServiceLink?: string;
+  defaultSeoTitle?: string;
+  defaultSeoDescription?: string;
+  defaultSeoKeywords?: string;
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaButtonText?: string;
+  ctaButtonLink?: string;
+}
+
+export async function getGlobal(): Promise<GlobalSettings | null> {
+  const data = await fetchAPI<StrapiResponse<GlobalSettings>>('/api/global?populate=*');
+  if (!data) return null;
+  return data.data;
+}
+
 export { STRAPI_URL };
-export type { Homepage, AboutPage, ServicesPage, ContactPage, BookPage, FeatureItem, NavLink, Button };
+export type { 
+  Homepage, 
+  AboutPage, 
+  ServicesPage, 
+  ContactPage, 
+  BookPage, 
+  FeatureItem, 
+  FeatureItemComponent,
+  NavLink, 
+  Button,
+  ContentSectionType 
+};

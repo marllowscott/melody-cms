@@ -18,38 +18,67 @@
   "attributes": {
     "subtitle": {
       "type": "string",
-      "default": "WHO WE SERVE"
+      "default": "WHO WE SERVE",
+      "description": "Page subtitle/label shown above the title"
     },
     "title": {
       "type": "text",
-      "default": "Partners in Leadership\nDevelopment"
+      "default": "Partners in Leadership\nDevelopment",
+      "description": "Main page title"
     },
     "heroDescription": {
       "type": "text",
-      "default": "Our work is particularly suited to technically strong leaders whose impact depends on effective communication and presence."
+      "default": "Our work is particularly suited to technically strong leaders whose impact depends on effective communication and presence.",
+      "description": "Hero section description text"
     },
     "audienceList": {
       "type": "text",
-      "default": "Corporates and financial institutions\nPublic sector and NGOs\nLeadership teams and executives\nProfessionals and emerging leaders"
+      "default": "Corporates and financial institutions\nPublic sector and NGOs\nLeadership teams and executives\nProfessionals and emerging leaders",
+      "description": "List of target audiences (one per line)"
     },
     "heroImage": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Hero section image"
+    },
+    "valuesSubtitle": {
+      "type": "string",
+      "default": "STRATEGIC OUTCOMES",
+      "description": "Subtitle for the values/outcomes section"
+    },
+    "valuesTitle": {
+      "type": "string",
+      "default": "What We Achieve",
+      "description": "Title for the values/outcomes section"
+    },
+    "valuesList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "sections.values-item",
+      "description": "List of strategic outcomes/values"
     },
     "ctaTitle": {
       "type": "string",
-      "default": "Ready to Partner?"
+      "default": "Ready to Partner?",
+      "description": "CTA section title"
     },
     "ctaDescription": {
       "type": "text",
-      "default": "If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals."
+      "default": "If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals.",
+      "description": "CTA section description"
     },
     "ctaButtonText": {
       "type": "string",
-      "default": "Request a Conversation"
+      "default": "Request a Conversation",
+      "description": "CTA button text"
+    },
+    "ctaButtonLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "CTA button link"
     },
     "contentSections": {
       "type": "dynamiczone",

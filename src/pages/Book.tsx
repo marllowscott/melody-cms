@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, Clock, Video } from "lucide-react";
-import { getBookPage, STRAPI_URL, type BookPage, type FeatureItem } from "@/lib/strapi";
+import { getBookPage, STRAPI_URL, type BookPage, type ContentSectionType } from "@/lib/strapi";
 import { useEffect } from "react";
 
 const Book = () => {
@@ -84,8 +84,14 @@ const Book = () => {
   ];
 
   const getFeaturesList = () => {
-    if (pageData?.features && Array.isArray(pageData.features) && pageData.features.length > 0) {
-      return pageData.features;
+    // Get features from contentSections dynamic zone
+    const featureItems = pageData?.contentSections?.filter(
+      (section): section is ContentSectionType & { __component: 'sections.feature-item' } => 
+        section.__component === 'sections.feature-item'
+    ) || [];
+    
+    if (featureItems.length > 0) {
+      return featureItems;
     }
     return fallbackFeatures;
   };
@@ -96,17 +102,21 @@ const Book = () => {
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16 -mt-[77px] md:mt-0">
-            <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">SPEAKING & COACHING</p>
+            <p className="text-primary font-semibold tracking-[0.3em] text-sm mb-4">
+              {loading ? 'Loading...' : pageData?.subtitle || 'SPEAKING & COACHING'}
+            </p>
             <h1 className="text-3xl md:text-6xl font-bold text-foreground mb-6 leading-tight break-words">
-              {loading ? 'Loading...' : pageData?.title || 'Melody'}
-              <span className="hidden md:inline"> — </span>
-              <br />
-              <span className="text-primary">Confidence Coach &</span>
-              <br />
-              <span className="text-primary">Leadership Consultant</span>
+              {loading ? 'Loading...' : 
+                (pageData?.heroTitle || 'Audax Leadership\nConfidence Coach and\nLeadership Consultant').split('\n').map((line, i) => (
+                  <>
+                    {line}
+                    {i < (pageData?.heroTitle || 'Audax Leadership\nConfidence Coach and\nLeadership Consultant').split('\n').length - 1 && <br />}
+                  </>
+                ))
+              }
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-full md:max-w-2xl mx-auto">
-              {loading ? 'Loading...' : pageData?.subtitle || 'Melody specialises in leadership communication, executive presence and visibility. She works with executives, professionals and emerging leaders to strengthen how they show up, communicate and influence, particularly in meetings, presentations, client engagements and other high-stakes moments.'}
+              {loading ? 'Loading...' : pageData?.heroDescription || 'Audax Leadership specializes in leadership communication, executive presence and visibility. We work with executives, professionals and emerging leaders to strengthen how they show up, communicate and influence, particularly in meetings, presentations, client engagements and other high-stakes moments.'}
             </p>
           </div>
 
@@ -138,10 +148,10 @@ const Book = () => {
           <div className="max-w-4xl mx-auto">
             <div className="bg-card rounded-lg p-8 md:p-12 border border-border text-center md:text-left">
               <h2 className="text-2xl font-bold text-foreground mb-2">
-                Get In Touch
+                {loading ? 'Loading...' : pageData?.formTitle || 'Get In Touch'}
               </h2>
               <p className="text-muted-foreground mb-8">
-                Interested in coaching or speaking? Let's discuss how we can work together.
+                {loading ? 'Loading...' : pageData?.formDescription || 'Interested in coaching or speaking? Let\'s discuss how we can work together.'}
               </p>
 
               <form
@@ -249,12 +259,12 @@ const Book = () => {
                   {isSubmitting ? (
                     "Sending..."
                   ) : (
-                    "Submit Inquiry"
+                    pageData?.formSubmitText || "Submit Inquiry"
                   )}
                 </Button>
 
                 <p className="text-center text-sm text-muted-foreground">
-                  I typically respond within 24-48 hours.
+                  {loading ? 'Loading...' : pageData?.formResponseMessage || 'I typically respond within 24-48 hours.'}
                 </p>
               </form>
             </div>

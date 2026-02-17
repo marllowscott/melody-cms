@@ -2,23 +2,30 @@
   "collectionName": "components_sections_services",
   "info": {
     "displayName": "Service",
-    "description": "Service offering with title, description, and icon"
+    "description": "Service offering with title, description, icon and optional link"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Service title"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "description": "Service description"
     },
     "icon": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Service icon/image"
+    },
+    "link": {
+      "type": "string",
+      "description": "Optional link to service details page"
     }
   },
   "config": {}

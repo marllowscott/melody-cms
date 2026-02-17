@@ -39,23 +39,6 @@
       "type": "string",
       "default": "Melody"
     },
-    "features": {
-      "type": "json",
-      "default": [
-        {
-          "title": "Executive Coaching – BOLD SPEAKING",
-          "description": "One-on-one coaching focused on confidence, communication, presence and leadership visibility."
-        },
-        {
-          "title": "Open Programmes",
-          "description": "BOLD SPEAKING – Group Coaching and English Fluency & Confident Communication."
-        },
-        {
-          "title": "Speaking Engagements",
-          "description": "Keynote topics on leadership confidence, communication with impact, executive presence, and leadership visibility."
-        }
-      ]
-    },
     "formTitle": {
       "type": "string",
       "default": "Get In Touch"
@@ -75,11 +58,13 @@
     "contentSections": {
       "type": "dynamiczone",
       "components": [
+        "sections.feature-item",
         "sections.text-image",
         "sections.text-card",
         "sections.testimonial",
         "sections.number"
-      ]
+      ],
+      "description": "Dynamic content sections"
     }
   }
 }

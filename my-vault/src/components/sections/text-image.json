@@ -1,23 +1,40 @@
 {
   "collectionName": "components_sections_text_images",
   "info": {
-    "displayName": "Text Image"
+    "displayName": "Text Image",
+    "description": "Section with text on one side and image on the other"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Section title"
     },
     "description": {
-      "type": "blocks"
+      "type": "blocks",
+      "description": "Section description (supports rich text/blocks)"
     },
     "image": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Image to display"
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "right",
+      "description": "Which side the image appears on"
+    },
+    "link": {
+      "type": "string",
+      "description": "Optional link for the image"
     }
   },
   "config": {}

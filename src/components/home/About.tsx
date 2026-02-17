@@ -64,7 +64,7 @@ const About = () => {
       const url = aboutData.image.data.attributes.url;
       return url?.startsWith('http') ? url : `${STRAPI_URL}${url}`;
     }
-    return "/melody.png";
+    return "/our-approach.png";
   };
 
   // Schema.org JSON-LD for Person

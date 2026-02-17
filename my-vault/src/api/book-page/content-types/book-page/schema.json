@@ -18,68 +18,72 @@
   "attributes": {
     "subtitle": {
       "type": "string",
-      "default": "SPEAKING & COACHING"
+      "default": "SPEAKING & COACHING",
+      "description": "Page subtitle/label"
     },
     "heroTitle": {
       "type": "text",
-      "default": "Melody\nConfidence Coach &\nLeadership Consultant"
+      "default": "Melody\nConfidence Coach &\nLeadership Consultant",
+      "description": "Hero section main title"
     },
     "heroDescription": {
       "type": "text",
-      "default": "Melody specialises in leadership communication, executive presence and visibility. She works with executives, professionals and emerging leaders to strengthen how they show up, communicate and influence, particularly in meetings, presentations, client engagements and other high-stakes moments."
+      "default": "Melody specialises in leadership communication, executive presence and visibility. She works with executives, professionals and emerging leaders to strengthen how they show up, communicate and influence, particularly in meetings, presentations, client engagements and other high-stakes moments.",
+      "description": "Hero section description"
     },
     "heroImage": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Hero section image of Melody"
     },
     "title": {
       "type": "string",
-      "default": "Melody"
-    },
-    "features": {
-      "type": "json",
-      "default": [
-        {
-          "title": "Executive Coaching – BOLD SPEAKING",
-          "description": "One-on-one coaching focused on confidence, communication, presence and leadership visibility."
-        },
-        {
-          "title": "Open Programmes",
-          "description": "BOLD SPEAKING – Group Coaching and English Fluency & Confident Communication."
-        },
-        {
-          "title": "Speaking Engagements",
-          "description": "Keynote topics on leadership confidence, communication with impact, executive presence, and leadership visibility."
-        }
-      ]
+      "default": "Melody",
+      "description": "Name/title of the person (Melody)"
     },
     "formTitle": {
       "type": "string",
-      "default": "Get In Touch"
+      "default": "Get In Touch",
+      "description": "Contact form title"
     },
     "formDescription": {
       "type": "text",
-      "default": "Interested in coaching or speaking? Let's discuss how we can work together."
+      "default": "Interested in coaching or speaking? Let's discuss how we can work together.",
+      "description": "Contact form description"
     },
     "formSubmitText": {
       "type": "string",
-      "default": "Submit Inquiry"
+      "default": "Submit Inquiry",
+      "description": "Form submit button text"
     },
     "formResponseMessage": {
       "type": "text",
-      "default": "I typically respond within 24-48 hours."
+      "default": "I typically respond within 24-48 hours.",
+      "description": "Message shown after form submission"
+    },
+    "privacyPolicyText": {
+      "type": "string",
+      "default": "Privacy Policy",
+      "description": "Privacy policy link text"
+    },
+    "privacyPolicyLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "Privacy policy page link"
     },
     "contentSections": {
       "type": "dynamiczone",
       "components": [
+        "sections.feature-item",
         "sections.text-image",
         "sections.text-card",
         "sections.testimonial",
         "sections.number"
-      ]
+      ],
+      "description": "Dynamic content sections"
     }
   }
 }

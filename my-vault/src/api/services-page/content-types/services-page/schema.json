@@ -18,80 +18,103 @@
   "attributes": {
     "subtitle": {
       "type": "string",
-      "default": "OUR WORK"
+      "default": "OUR WORK",
+      "description": "Page subtitle/label"
     },
     "heroTitle": {
       "type": "text",
-      "default": "Practical, Application-Driven\nProgrammes"
+      "default": "Practical, Application-Driven\nProgrammes",
+      "description": "Hero section main title"
     },
     "heroDescription": {
       "type": "text",
-      "default": "Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact."
+      "default": "Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact.",
+      "description": "Hero section description"
     },
     "heroImage": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Hero section image"
     },
     "benefitsSubtitle": {
       "type": "string",
-      "default": "CORPORATE PROGRAMMES"
+      "default": "CORPORATE PROGRAMMES",
+      "description": "Benefits section subtitle"
     },
     "benefitsTitle": {
       "type": "text",
-      "default": "Leadership\nCommunication\nDevelopment"
+      "default": "Leadership\nCommunication\nDevelopment",
+      "description": "Benefits section title"
     },
     "benefitsDescription": {
       "type": "text",
-      "default": "Our programmes strengthen how leaders communicate, show up and influence, particularly where clarity, confidence and credibility are critical."
+      "default": "Our programmes strengthen how leaders communicate, show up and influence, particularly where clarity, confidence and credibility are critical.",
+      "description": "Benefits section description"
     },
     "benefitsList": {
       "type": "text",
-      "default": "Leadership Communication & Executive Presence: Strengthen how leaders communicate and show up in high-stakes environments. Ideal for executives and senior leaders.\nPublic Speaking for Leaders: Master the art of delivering impactful presentations and speeches. Ideal for leaders who need to influence and inspire audiences.\nLeadership Visibility & Stakeholder Presence: Enhance visibility and build stronger stakeholder relationships. Ideal for leaders focused on influence and networking.\nExecutive Presence [including professional image & etiquette]: Develop the gravitas and authority that commands attention. Ideal for professionals building executive presence."
+      "default": "Leadership Communication & Executive Presence: Strengthen how leaders communicate and show up in high-stakes environments. Ideal for executives and senior leaders.\nPublic Speaking for Leaders: Master the art of delivering impactful presentations and speeches. Ideal for leaders who need to influence and inspire audiences.\nLeadership Visibility & Stakeholder Presence: Enhance visibility and build stronger stakeholder relationships. Ideal for leaders focused on influence and networking.\nExecutive Presence [including professional image & etiquette]: Develop the gravitas and authority that commands attention. Ideal for professionals building executive presence.",
+      "description": "List of benefits/services (one per line)"
     },
     "outcomesSubtitle": {
       "type": "string",
-      "default": "CLIENT-FACING & CUSTOMER ENGAGEMENT"
+      "default": "CLIENT-FACING & CUSTOMER ENGAGEMENT",
+      "description": "Outcomes section subtitle"
     },
     "outcomesTitle": {
       "type": "string",
-      "default": "Building Confidence in Client Interactions"
+      "default": "Building Confidence in Client Interactions",
+      "description": "Outcomes section title"
     },
     "outcomesDescription": {
       "type": "text",
-      "default": "Programmes designed to enhance communication and presence in client-facing roles."
+      "default": "Programmes designed to enhance communication and presence in client-facing roles.",
+      "description": "Outcomes section description"
     },
     "outcomesList": {
       "type": "component",
       "repeatable": true,
-      "component": "sections.outcome-item"
+      "component": "sections.outcome-item",
+      "description": "List of client-facing outcomes"
     },
     "processSubtitle": {
       "type": "string",
-      "default": "DELIVERY FORMATS"
+      "default": "DELIVERY FORMATS",
+      "description": "Process/delivery section subtitle"
     },
     "processTitle": {
       "type": "string",
-      "default": "Flexible Delivery Options"
+      "default": "Flexible Delivery Options",
+      "description": "Process/delivery section title"
     },
     "processList": {
       "type": "component",
       "repeatable": true,
-      "component": "sections.process-item"
+      "component": "sections.process-item",
+      "description": "List of delivery format options"
     },
     "ctaTitle": {
       "type": "string",
-      "default": "Ready to Partner?"
+      "default": "Ready to Partner?",
+      "description": "CTA section title"
     },
     "ctaButtonText": {
       "type": "string",
-      "default": "Request a Conversation"
+      "default": "Request a Conversation",
+      "description": "CTA button text"
+    },
+    "ctaButtonLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "CTA button link"
     },
     "ctaDescription": {
       "type": "text",
-      "default": "If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals."
+      "default": "If you're developing leaders, strengthening client-facing capability or looking for a speaker, we would be glad to explore how we can support your goals.",
+      "description": "CTA section description"
     },
     "contentSections": {
       "type": "dynamiczone",
@@ -101,7 +124,8 @@
         "sections.text-image",
         "sections.testimonial",
         "sections.number"
-      ]
+      ],
+      "description": "Dynamic content sections"
     }
   }
 }

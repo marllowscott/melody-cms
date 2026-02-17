@@ -91,6 +91,24 @@
       "type": "text",
       "default": "Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact."
     },
+    "servicesSectionLink": {
+      "type": "string",
+      "default": "/services"
+    },
+    "servicesSectionLinkText": {
+      "type": "string",
+      "default": "View All Services"
+    },
+    "testimonialsSectionTitle": {
+      "type": "string",
+      "default": "CLIENT STORIES",
+      "description": "Testimonials section subtitle"
+    },
+    "testimonialsSectionSubtitle": {
+      "type": "string",
+      "default": "Voices of Transformation",
+      "description": "Testimonials section main title"
+    },
     "contentSections": {
       "type": "dynamiczone",
       "components": [

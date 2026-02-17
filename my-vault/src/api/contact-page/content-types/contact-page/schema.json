@@ -18,62 +18,86 @@
   "attributes": {
     "subtitle": {
       "type": "string",
-      "default": "CONTACT"
+      "default": "CONTACT",
+      "description": "Page subtitle/label"
     },
     "title": {
       "type": "string",
-      "default": "Get in Touch"
+      "default": "Get in Touch",
+      "description": "Page title"
     },
     "heroImage": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Hero section background image"
     },
     "email1": {
       "type": "email",
-      "default": "info@audaxleadership.com"
+      "default": "info@audaxleadership.com",
+      "description": "Primary contact email"
     },
     "email2": {
       "type": "email",
-      "default": "team@audaxleadership.com"
+      "default": "team@audaxleadership.com",
+      "description": "Secondary contact email"
     },
     "email3": {
       "type": "email",
-      "default": "melody@audaxleadership.com"
+      "default": "melody@audaxleadership.com",
+      "description": "Melody's direct email"
     },
     "phone": {
       "type": "string",
-      "default": "+263 73 540 2184"
+      "default": "+263 73 540 2184",
+      "description": "Contact phone number"
     },
     "linkedinUrl": {
       "type": "string",
-      "default": "https://www.linkedin.com/in/melody-chipo-njanji-makuwaza-65b1782a"
+      "default": "https://www.linkedin.com/in/melody-chipo-njanji-makuwaza-65b1782a",
+      "description": "LinkedIn profile URL"
     },
     "facebookUrl": {
       "type": "string",
-      "default": "https://www.facebook.com/DialoguesWithMel"
+      "default": "https://www.facebook.com/DialoguesWithMel",
+      "description": "Facebook page URL"
     },
     "instagramUrl": {
       "type": "string",
-      "default": "https://www.instagram.com/dialogueswithmel/"
+      "default": "https://www.instagram.com/dialogueswithmel/",
+      "description": "Instagram profile URL"
     },
     "formTitle": {
       "type": "string",
-      "default": "Send a Message"
+      "default": "Send a Message",
+      "description": "Contact form title"
     },
     "formDescription": {
       "type": "text",
-      "default": "If you are developing leaders, strengthening client-facing capability or looking for a speaker or facilitator, we would be glad to explore how we can support your goals."
+      "default": "If you are developing leaders, strengthening client-facing capability or looking for a speaker or facilitator, we would be glad to explore how we can support your goals.",
+      "description": "Contact form description"
     },
     "formSubmitText": {
       "type": "string",
-      "default": "Send Message"
+      "default": "Send Message",
+      "description": "Form submit button text"
     },
     "successMessage": {
       "type": "text",
-      "default": "I'll get back to you as soon as possible."
+      "default": "I'll get back to you as soon as possible.",
+      "description": "Message shown after form submission"
+    },
+    "privacyPolicyText": {
+      "type": "string",
+      "default": "Privacy Policy",
+      "description": "Privacy policy link text"
+    },
+    "privacyPolicyLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "Privacy policy page link"
     },
     "contentSections": {
       "type": "dynamiczone",
@@ -81,7 +105,8 @@
         "sections.text-image",
         "sections.text-card",
         "sections.testimonial"
-      ]
+      ],
+      "description": "Dynamic content sections"
     }
   }
 }

@@ -1,17 +1,22 @@
 {
   "collectionName": "components_general_navlinks",
   "info": {
-    "displayName": "Navlink"
+    "displayName": "Navlink",
+    "description": "Navigation link with label text and href path"
   },
   "options": {},
   "attributes": {
-    "label": {
+    "text": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "Home",
+      "description": "Link label text"
     },
-    "path": {
+    "href": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "/",
+      "description": "Link path (e.g., /, /services, /about)"
     }
   },
   "config": {}

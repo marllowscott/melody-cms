@@ -67,7 +67,7 @@ const About = () => {
       const url = pageData.heroImage.data.attributes.url;
       return url?.startsWith('http') ? url : `${STRAPI_URL}${url}`;
     }
-    return "/melody.png";
+    return "/wws.png";
   };
 
   // Get title lines from CMS or fallback

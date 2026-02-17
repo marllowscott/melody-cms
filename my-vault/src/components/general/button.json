@@ -1,17 +1,32 @@
 {
   "collectionName": "components_general_buttons",
   "info": {
-    "displayName": "Button"
+    "displayName": "Button",
+    "description": "Call-to-action button with text and link"
   },
   "options": {},
   "attributes": {
     "text": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "Click Here",
+      "description": "Button label text"
     },
     "link": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "/contact",
+      "description": "URL the button links to"
+    },
+    "isPrimary": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this is a primary (filled) or secondary (outline) button"
+    },
+    "opensInNewTab": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the link should open in a new tab"
     }
   },
   "config": {}

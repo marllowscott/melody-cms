@@ -21,26 +21,31 @@
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Site logo (used in header)"
     },
     "navbar": {
       "type": "component",
       "component": "general.navlink",
-      "repeatable": true
+      "repeatable": true,
+      "description": "Navigation links for the header menu"
     },
     "heroTitle": {
       "type": "string",
       "required": true,
-      "default": "Show up with confidence.\nCommunicate with clarity.\nLead with presence."
+      "default": "Show up with confidence.\nCommunicate with clarity.\nLead with presence.",
+      "description": "Main hero section title"
     },
     "heroSubtitle": {
       "type": "text",
-      "default": "We support leaders, professionals and client-facing teams to communicate effectively in high-stakes environments — strengthening leadership communication, executive presence and professional visibility."
+      "default": "We support leaders, professionals and client-facing teams to communicate effectively in high-stakes environments — strengthening leadership communication, executive presence and professional visibility.",
+      "description": "Hero section subtitle/description"
     },
     "heroButtons": {
       "type": "component",
       "component": "general.button",
-      "repeatable": true
+      "repeatable": true,
+      "description": "Call-to-action buttons in the hero section"
     },
     "heroBackgroundType": {
       "type": "enumeration",
@@ -49,47 +54,76 @@
         "local",
         "color"
       ],
-      "default": "local"
+      "default": "local",
+      "description": "Type of hero background (image, local file, or solid color)"
     },
     "heroBackgroundColor": {
       "type": "string",
       "regex": "^#[0-9A-Fa-f]{6}$",
-      "required": false
+      "required": false,
+      "description": "Solid background color for hero (hex format)"
     },
     "heroOverlayColor": {
       "type": "string",
       "default": "#060621",
-      "required": false
+      "required": false,
+      "description": "Color of the overlay on hero image"
     },
     "heroOverlayOpacity": {
       "type": "decimal",
       "min": 0,
       "max": 1,
       "default": 0.7,
-      "required": false
+      "required": false,
+      "description": "Opacity of the hero overlay (0-1)"
     },
     "heroLocalImage": {
       "type": "string",
-      "required": false
+      "required": false,
+      "description": "Local image filename from /public folder"
     },
     "heroImages": {
       "type": "media",
       "multiple": true,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Hero background images (for slideshow)"
     },
     "servicesSectionTitle": {
       "type": "string",
-      "default": "OUR WORK"
+      "default": "OUR WORK",
+      "description": "Services section subtitle"
     },
     "servicesSectionSubtitle": {
       "type": "string",
-      "default": "Practical, Application-Driven Programmes"
+      "default": "Practical, Application-Driven Programmes",
+      "description": "Services section main title"
     },
     "servicesSectionDescription": {
       "type": "text",
-      "default": "Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact."
+      "default": "Our programmes are practical, application-driven and tailored to organisational context. Delivered through workshops, coaching and speaking, they are designed for immediate and sustained impact.",
+      "description": "Services section description"
+    },
+    "servicesSectionLink": {
+      "type": "string",
+      "default": "/services",
+      "description": "Link to services page"
+    },
+    "servicesSectionLinkText": {
+      "type": "string",
+      "default": "View All Services",
+      "description": "Text for the services section link"
+    },
+    "testimonialsSectionTitle": {
+      "type": "string",
+      "default": "CLIENT STORIES",
+      "description": "Testimonials section subtitle"
+    },
+    "testimonialsSectionSubtitle": {
+      "type": "string",
+      "default": "Voices of Transformation",
+      "description": "Testimonials section main title"
     },
     "contentSections": {
       "type": "dynamiczone",
@@ -100,7 +134,28 @@
         "sections.about-section",
         "sections.service",
         "sections.testimonial"
-      ]
+      ],
+      "description": "Dynamic content sections that can be added to the homepage"
+    },
+    "ctaTitle": {
+      "type": "text",
+      "default": "Ready to Elevate Your\nLeadership Impact?",
+      "description": "CTA section title at the bottom of homepage"
+    },
+    "ctaDescription": {
+      "type": "text",
+      "default": "Let's explore how we can support your leadership development and communication goals.",
+      "description": "CTA section description"
+    },
+    "ctaButtonText": {
+      "type": "string",
+      "default": "Request a Conversation",
+      "description": "CTA button text"
+    },
+    "ctaButtonLink": {
+      "type": "string",
+      "default": "/contact",
+      "description": "CTA button link"
     }
   }
 }

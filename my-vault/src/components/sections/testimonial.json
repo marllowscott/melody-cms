@@ -2,20 +2,39 @@
   "collectionName": "components_sections_testimonials",
   "info": {
     "displayName": "Testimonial",
-    "description": "Client testimonial with quote, name, and title"
+    "description": "Client testimonial with quote, name, title, and optional avatar image"
   },
   "options": {},
   "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "description": "Section title (e.g., CLIENT STORIES)"
+    },
+    "sectionSubtitle": {
+      "type": "string",
+      "description": "Section subtitle (e.g., Voices of Transformation)"
+    },
     "quote": {
       "type": "text",
-      "required": true
+      "required": true,
+      "description": "The testimonial quote or feedback text"
     },
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Name of the person giving the testimonial"
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "description": "Job title or role of the person"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "description": "Optional avatar image of the person"
     }
   },
   "config": {}

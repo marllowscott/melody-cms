@@ -14,7 +14,7 @@ const DEFAULT_NAV_LINKS = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [navLinks, setNavLinks] = useState(DEFAULT_NAV_LINKS);
+  const [navLinks, setNavLinks] = useState<any[]>(DEFAULT_NAV_LINKS);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
@@ -22,15 +22,20 @@ const Header = () => {
     const fetchNavLinks = async () => {
       try {
         const data = await getHomepage();
-        if (data?.navbar && Array.isArray(data.navbar)) {
-          const cmsLinks = data.navbar.map((link: NavLink) => ({
-            path: link.href || "/",
-            label: link.text
+        console.log('Homepage data:', data);
+        
+        if (data?.navbar && Array.isArray(data.navbar) && data.navbar.length > 0) {
+          const cmsLinks = data.navbar.map((link: any) => ({
+            path: link.href || link.path || "/",
+            label: link.text || link.label || "Link"
           }));
-          setNavLinks(cmsLinks.length > 0 ? cmsLinks : DEFAULT_NAV_LINKS);
+          console.log('Mapped nav links:', cmsLinks);
+          setNavLinks(cmsLinks);
         }
+        // Otherwise, keep using DEFAULT_NAV_LINKS
       } catch (error) {
         console.error('Error fetching nav links:', error);
+        // Keep using DEFAULT_NAV_LINKS on error
       } finally {
         setLoading(false);
       }
@@ -57,7 +62,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {(navLinks || DEFAULT_NAV_LINKS).map((link: any) => (
               <Link
                 key={link.path}
                 to={link.path}
@@ -65,7 +70,7 @@ const Header = () => {
                 className={`text-sm font-medium tracking-wide transition-colors hover:text-primary ${isActive(link.path) ? "text-primary" : "text-muted-foreground"
                   }`}
               >
-                {link.label.toUpperCase()}
+                {(link.label || link.text || link.path || "Link").toUpperCase()}
               </Link>
             ))}
           </div>
@@ -92,7 +97,7 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden pt-6 pb-4 animate-fade-in">
             <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
+              {(navLinks || DEFAULT_NAV_LINKS).map((link: any) => (
                 <Link
                   key={link.path}
                   to={link.path}
@@ -103,7 +108,7 @@ const Header = () => {
                   className={`text-lg font-medium tracking-wide transition-colors hover:text-primary ${isActive(link.path) ? "text-primary" : "text-muted-foreground"
                     }`}
                 >
-                  {link.label}
+                  {link.label || link.text || link.path || "Link"}
                 </Link>
               ))}
               <Button asChild size="lg" className="mt-4 mx-auto rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-7 py-6 group">

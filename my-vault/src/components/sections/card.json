@@ -1,23 +1,31 @@
 {
   "collectionName": "components_sections_cards",
   "info": {
-    "displayName": "Card"
+    "displayName": "Card",
+    "description": "Individual card with title, description, icon and optional link"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Card title"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "description": "Card description text"
     },
     "icon": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Card icon/image"
+    },
+    "link": {
+      "type": "string",
+      "description": "Optional link when card is clickable"
     }
   },
   "config": {}

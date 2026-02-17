@@ -8,32 +8,49 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Section title"
     },
     "subtitle": {
-      "type": "string"
+      "type": "string",
+      "description": "Section subtitle"
     },
     "description1": {
-      "type": "text"
+      "type": "text",
+      "description": "First paragraph of description"
     },
     "description2": {
-      "type": "text"
+      "type": "text",
+      "description": "Second paragraph of description"
     },
     "bulletPoints": {
-      "type": "json"
+      "type": "json",
+      "description": "List of bullet points (array of strings)"
     },
     "image": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "description": "Section image"
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left",
+      "description": "Which side the image appears on"
     },
     "buttonText": {
-      "type": "string"
+      "type": "string",
+      "description": "Button text"
     },
     "buttonLink": {
-      "type": "string"
+      "type": "string",
+      "description": "Button link URL"
     }
   },
   "config": {}

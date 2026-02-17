@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_section_feature_items",
+  "info": {
+    "singularName": "feature-item",
+    "pluralName": "feature-items",
+    "displayName": "Feature Item",
+    "description": "Individual feature item with title and description"
+  },
+  "options": {},
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "Feature title"
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "description": "Feature description"
+    }
+  }
+}

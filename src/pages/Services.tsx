@@ -98,7 +98,7 @@ const ServicesPage = () => {
       const url = pageData.heroImage.data.attributes.url;
       return url?.startsWith('http') ? url : `${STRAPI_URL}${url}`;
     }
-    return "/team.png";
+    return "/corporate.png";
   };
 
   // Get hero title lines from CMS or fallback
