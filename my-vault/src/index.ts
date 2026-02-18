@@ -1,9 +1,13 @@
+// SEED SCRIPT DISABLED - This was causing content to reset on every Strapi restart
+// To re-enable for development, uncomment the code below
+
+/*
 import seedData from './data/seed.json';
 
 export default {
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register({ strapi }) {},
 
-  bootstrap({ strapi }: { strapi: any }) {
+  bootstrap({ strapi }) {
     // Seed data on startup - will update existing entries
     const seedContentTypes = async () => {
       const contentTypes = [
@@ -48,5 +52,14 @@ export default {
 
     // Run seeder
     seedContentTypes();
+  },
+};
+*/
+
+// Disabled seed script - user content should now persist
+export default {
+  register({ strapi }) {},
+  bootstrap({ strapi }) {
+    console.log('✅ Bootstrap complete - seed script disabled');
   },
 };
