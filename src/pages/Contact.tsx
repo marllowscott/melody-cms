@@ -90,10 +90,10 @@ const Contact = () => {
                   <Mail className="w-6 h-6 text-primary" />
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">Email</p>
-                <div className="space-y-1">
-                  <a href={`mailto:${pageData?.email1 || 'info@audaxleadership.com'}`} className="text-foreground font-medium hover:text-primary block">{pageData?.email1 || 'info@audaxleadership.com'}</a>
-                  <a href={`mailto:${pageData?.email2 || 'team@audaxleadership.com'}`} className="text-foreground font-medium hover:text-primary block">{pageData?.email2 || 'team@audaxleadership.com'}</a>
-                  <a href={`mailto:${pageData?.email3 || 'melody@audaxleadership.com'}`} className="text-foreground font-medium hover:text-primary block">{pageData?.email3 || 'melody@audaxleadership.com'}</a>
+                <div className="space-y-1 break-all">
+                  <a href={`mailto:${pageData?.email1 || 'info@audaxleadership.com'}`} className="text-foreground font-medium hover:text-primary block text-sm">{pageData?.email1 || 'info@audaxleadership.com'}</a>
+                  <a href={`mailto:${pageData?.email2 || 'team@audaxleadership.com'}`} className="text-foreground font-medium hover:text-primary block text-sm">{pageData?.email2 || 'team@audaxleadership.com'}</a>
+                  <a href={`mailto:${pageData?.email3 || 'melody@audaxleadership.com'}`} className="text-foreground font-medium hover:text-primary block text-sm">{pageData?.email3 || 'melody@audaxleadership.com'}</a>
                 </div>
               </div>
               <div className="space-y-8">
