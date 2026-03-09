@@ -1,65 +1,23 @@
-// SEED SCRIPT DISABLED - This was causing content to reset on every Strapi restart
-// To re-enable for development, uncomment the code below
-
-/*
-import seedData from './data/seed.json';
+// =============================================================================
+// SEED SCRIPT PERMANENTLY REMOVED
+// =============================================================================
+// The previous seed script was causing content to reset on every Strapi restart
+// because it was updating existing database entries with seed data.
+//
+// To prevent this issue from occurring again, the seed functionality has been
+// completely removed from this file.
+//
+// If you need to seed data in the future, create a NEW separate script that:
+// - Only CREATES new entries (never updates existing ones)
+// - Has a mechanism to check if entries already exist before creating
+// - Can be manually triggered (not on every startup)
+//
+// =============================================================================
 
 export default {
   register({ strapi }) {},
 
   bootstrap({ strapi }) {
-    // Seed data on startup - will update existing entries
-    const seedContentTypes = async () => {
-      const contentTypes = [
-        { name: 'global', id: 1 },
-        { name: 'homepage', id: 1 },
-        { name: 'about-page', id: 1 },
-        { name: 'services-page', id: 1 },
-        { name: 'book-page', id: 1 },
-        { name: 'contact-page', id: 1 },
-      ];
-
-      for (const ct of contentTypes) {
-        try {
-          const data = seedData[ct.name as keyof typeof seedData];
-          if (!data) continue;
-
-          // Try to update first, if fails, create
-          try {
-            await strapi.db.query(`api::${ct.name}.${ct.name}`).update({
-              where: { id: ct.id },
-              data: data
-            });
-            console.log(`✅ Updated ${ct.name} with numbered placeholders`);
-          } catch {
-            // If update fails, create new
-            try {
-              await strapi.db.query(`api::${ct.name}.${ct.name}`).create({
-                data: { ...data, id: ct.id }
-              });
-              console.log(`✅ Created ${ct.name} with numbered placeholders`);
-            } catch (createError) {
-              console.log(`⏭️  ${ct.name} - entry may already exist`);
-            }
-          }
-        } catch (error) {
-          console.log(`❌ Error with ${ct.name}:`, error);
-        }
-      }
-      console.log('🎉 All content seeded with numbered placeholders!');
-      console.log('Now edit fields in Strapi - each field shows its number!');
-    };
-
-    // Run seeder
-    seedContentTypes();
-  },
-};
-*/
-
-// Disabled seed script - user content should now persist
-export default {
-  register({ strapi }) {},
-  bootstrap({ strapi }) {
-    console.log('✅ Bootstrap complete - seed script disabled');
+    console.log('✅ Bootstrap complete - no seed script running');
   },
 };

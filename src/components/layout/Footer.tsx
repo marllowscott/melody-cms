@@ -11,9 +11,9 @@ const Footer = () => {
           <div className="md:col-span-2">
             <Link to="/" className="inline-block mb-4">
               <img
-                src="/al-logo.svg"
-                alt="AL Leadership Logo"
-                className="h-12 w-auto"
+                src="/audax-logo.svg"
+                alt="Audax Leadership Logo"
+                className="h-8 md:h-[70px] w-auto"
                 style={{ filter: 'brightness(0) saturate(100%) invert(73%) sepia(89%) saturate(1592%) hue-rotate(354deg) brightness(101%) contrast(101%)' }}
               />
             </Link>
